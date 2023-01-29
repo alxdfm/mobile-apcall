@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Button, StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import {
   useFonts,
   Inter_400Regular,
@@ -8,7 +7,7 @@ import {
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
 
-import { Loading } from './src/components/Loading';
+import { Loading } from './src/components/Loading/Loading';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,7 +17,7 @@ export default function App() {
     Inter_800ExtraBold,
   });
 
-  if (!fontsLoaded) return <Loading />;
+  if (fontsLoaded) return <Loading />;
 
   return (
     <View style={styles.container}>
