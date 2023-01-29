@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const stylesLoading = StyleSheet.create({
+const stylesHome = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
@@ -9,4 +9,4 @@ const stylesLoading = StyleSheet.create({
   },
 });
 
-export default stylesLoading;
+export default stylesHome;
