@@ -9,7 +9,6 @@ import {
 
 import { Loading } from './src/components/Loading/Loading';
 import Home from './src/screens/Home';
-import Header from './src/components/Header';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +23,6 @@ export default function App() {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <Header />
       <Home />
     </>
   );
