@@ -23,13 +23,9 @@ export default function App() {
 
   return (
     <>
+      <StatusBar barStyle="light-content" />
       <Header />
       <Home />
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="transparent"
-        translucent
-      />
     </>
   );
 }

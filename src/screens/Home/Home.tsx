@@ -4,7 +4,7 @@ import styles from './styles';
 export function Home() {
   return (
     <View style={styles.container}>
-      <Text>First</Text>
+      <Text style={{ fontWeight: 'bold' }}>Fweiwrst</Text>
     </View>
   );
 }

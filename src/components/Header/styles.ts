@@ -1,18 +1,14 @@
 import { StyleSheet } from 'react-native';
+import global from '../../global/colors';
 
 const stylesHeader = StyleSheet.create({
   container: {
-    height: 84,
-    paddingTop: 40,
-    paddingLeft: 16,
-    paddingRight: 16,
-    backgroundColor: '#81B7EA',
+    height: 44,
+    backgroundColor: global.colors.blue.primary,
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  logo: {
-    width: 40,
-    height: 44,
+    borderBottomColor: global.colors.blue.secondary,
+    borderBottomWidth: 4,
   },
 });
 
