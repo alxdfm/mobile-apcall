@@ -4,6 +4,9 @@ const global = {
       primary: '#81B7EA',
       secondary: '#98CDFF',
     },
+    yellow: {
+      primary: '#F1C835',
+    },
   },
 };
 
