@@ -18,7 +18,30 @@ type Call = {
   callTitle: string;
   callDescription: string;
   callPriority: number;
+  callStatus: string;
   user: User[];
+};
+
+const renderCallsScrollView = (data: Call[] | null) => {
+  if (!data || !data.length) return null;
+
+  return (
+    <ScrollView>
+      {data.map((call) => (
+        <Text key={call.callId}>{call.callTitle}</Text>
+      ))}
+    </ScrollView>
+  );
+};
+
+const filterCallsByStatus = (
+  data: { local: { userName: string; calls: Call[] } },
+  filter: string
+) => {
+  const filteredCalls = data.local.calls.filter(
+    (call) => call.callStatus === filter
+  );
+  return !filteredCalls.length ? null : filteredCalls;
 };
 
 export function Home() {
@@ -26,27 +49,32 @@ export function Home() {
     local: {
       userName: 'Alexandre',
       calls: [
-        // {
-        //   callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
-        //   callTitle: 'Tomada não funcionando',
-        //   callDescription: '',
-        //   callPriority: 5,
-        //   user: [
-        //     {
-        //       name: 'Alexandre',
-        //       email: 'alexandre@email.com.br',
-        //       apartment: [
-        //         {
-        //           apNumber: '1223',
-        //           apDescription: 'Bloco D',
-        //         },
-        //       ],
-        //     },
-        //   ],
-        // },
+        {
+          callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
+          callTitle: 'Tomada não funcionando',
+          callDescription: '',
+          callPriority: 5,
+          callStatus: 'open',
+          user: [
+            {
+              name: 'Alexandre',
+              email: 'alexandre@email.com.br',
+              apartment: [
+                {
+                  apNumber: '1223',
+                  apDescription: 'Bloco D',
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   };
+
+  const callsOpened = filterCallsByStatus(data, 'open');
+  const callsClosed = filterCallsByStatus(data, 'closed');
+
   return (
     <View style={styles.container}>
       <Header />
@@ -54,16 +82,10 @@ export function Home() {
         <Text style={styles.title}>Olá, {data.local.userName}</Text>
         <View style={styles.callsOpen}>
           <Text style={styles.callsTitle}>Seus chamados abertos:</Text>
-          {data.local.calls.length === 0 ? (
+          {renderCallsScrollView(callsOpened) || (
             <View style={styles.callsEmpty}>
-              <Text style={styles.callsEmptyText}>Não há chamados</Text>
+              <Text style={styles.callsEmptyText}>Nada por aqui</Text>
             </View>
-          ) : (
-            <ScrollView>
-              {data.local.calls.map((call) => (
-                <Text key={call.callId}>{call.callTitle}</Text>
-              ))}
-            </ScrollView>
           )}
           <TouchableHighlight
             onPress={() => {}}
@@ -78,16 +100,10 @@ export function Home() {
         </View>
         <View style={styles.callsClosed}>
           <Text style={styles.callsTitle}>Seus chamados já fechados:</Text>
-          {data.local.calls.length === 0 ? (
+          {renderCallsScrollView(callsClosed) || (
             <View style={styles.callsEmpty}>
-              <Text style={styles.callsEmptyText}>Não há chamados</Text>
+              <Text style={styles.callsEmptyText}>Nada por aqui</Text>
             </View>
-          ) : (
-            <ScrollView>
-              {data.local.calls.map((call) => (
-                <Text key={call.callId}>{call.callTitle}</Text>
-              ))}
-            </ScrollView>
           )}
         </View>
       </View>
