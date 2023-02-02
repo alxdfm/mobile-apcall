@@ -11,7 +11,7 @@ export function Header() {
         <MaterialIcons
           name="list"
           size={24}
-          color={global.colors.yellow.primary}
+          color={global.colors.blue.secondary}
         />
       </TouchableOpacity>
       <TouchableOpacity activeOpacity={0.5}>
@@ -21,7 +21,7 @@ export function Header() {
         <MaterialIcons
           name="logout"
           size={24}
-          color={global.colors.yellow.primary}
+          color={global.colors.blue.secondary}
         />
       </TouchableOpacity>
     </View>

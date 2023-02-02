@@ -4,13 +4,12 @@ import global from '../../global/colors';
 const stylesHeader = StyleSheet.create({
   container: {
     width: '100%',
-    height: 32,
+    height: 24,
     backgroundColor: global.colors.blue.primary,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 12,
-    borderBottomColor: global.colors.blue.secondary,
-    borderBottomWidth: 4,
     elevation: 10,
   },
 });

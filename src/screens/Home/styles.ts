@@ -19,13 +19,11 @@ const stylesHome = StyleSheet.create({
   },
   callsOpen: {
     flex: 2,
-    borderColor: global.colors.yellow.primary,
-    borderWidth: 1,
     borderRadius: 4,
     padding: 8,
     backgroundColor: global.colors.blue.secondary,
-    elevation: 10,
-    shadowColor: '#000',
+    elevation: 2,
+    shadowColor: global.colors.neutral.black,
   },
   callsTitle: {
     textAlign: 'left',
@@ -35,26 +33,23 @@ const stylesHome = StyleSheet.create({
   },
   createCallButton: {
     marginTop: 4,
-    borderRadius: 6,
+    borderRadius: 4,
     alignSelf: 'flex-end',
   },
   textCreateCallButton: {
     fontSize: 10,
-    padding: 2,
+    padding: 4,
     borderRadius: 4,
-    borderWidth: 0.5,
     backgroundColor: global.colors.yellow.primary,
     elevation: 5,
   },
   callsClosed: {
     flex: 1,
     marginTop: 8,
-    borderColor: global.colors.yellow.primary,
-    borderWidth: 1,
     borderRadius: 4,
     padding: 8,
     backgroundColor: global.colors.blue.secondary,
-    elevation: 10,
+    elevation: 2,
     shadowColor: '#000',
   },
   callsEmpty: {
@@ -63,7 +58,7 @@ const stylesHome = StyleSheet.create({
     alignItems: 'center',
   },
   callsEmptyText: {
-    color: '#eee',
+    color: global.colors.neutral.lightGray,
     fontSize: 12,
   },
 });

@@ -7,6 +7,13 @@ const global = {
     yellow: {
       primary: '#F1C835',
     },
+    neutral: {
+      black: '#000',
+      darkGray: '#aaa',
+      gray: '#ccc',
+      lightGray: '#eee',
+      white: '#fff',
+    },
   },
 };
 

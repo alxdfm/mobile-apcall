@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
 import Header from '../../components/Header';
+import global from '../../global/colors';
 import styles from './styles';
 
 type Apartment = {
@@ -49,25 +50,25 @@ export function Home() {
     local: {
       userName: 'Alexandre',
       calls: [
-        {
-          callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
-          callTitle: 'Tomada não funcionando',
-          callDescription: '',
-          callPriority: 5,
-          callStatus: 'open',
-          user: [
-            {
-              name: 'Alexandre',
-              email: 'alexandre@email.com.br',
-              apartment: [
-                {
-                  apNumber: '1223',
-                  apDescription: 'Bloco D',
-                },
-              ],
-            },
-          ],
-        },
+        // {
+        //   callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
+        //   callTitle: 'Tomada não funcionando',
+        //   callDescription: '',
+        //   callPriority: 5,
+        //   callStatus: 'open',
+        //   user: [
+        //     {
+        //       name: 'Alexandre',
+        //       email: 'alexandre@email.com.br',
+        //       apartment: [
+        //         {
+        //           apNumber: '1223',
+        //           apDescription: 'Bloco D',
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // },
       ],
     },
   };
@@ -90,7 +91,7 @@ export function Home() {
           <TouchableHighlight
             onPress={() => {}}
             activeOpacity={0.6}
-            underlayColor="#000"
+            underlayColor={global.colors.neutral.black}
             style={styles.createCallButton}
           >
             <Text style={styles.textCreateCallButton}>
