@@ -1,4 +1,6 @@
 import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
+import CallCard from '../../components/CallCard';
+import { CallCardProps } from '../../components/CallCard/CallCard';
 import Header from '../../components/Header';
 import global from '../../global/colors';
 import styles from './styles';
@@ -28,9 +30,24 @@ const renderCallsScrollView = (data: Call[] | null) => {
 
   return (
     <ScrollView>
-      {data.map((call) => (
-        <Text key={call.callId}>{call.callTitle}</Text>
-      ))}
+      {data.map((call) => {
+        const props: CallCardProps = {
+          callId: call.callId,
+          callTitle: call.callTitle,
+          callDescription: call.callDescription,
+          callPriority: call.callPriority,
+          callStatus: call.callStatus,
+        };
+        return (
+          <CallCard
+            callId={call.callId}
+            callTitle={call.callTitle}
+            callDescription={call.callDescription}
+            callPriority={call.callPriority}
+            callStatus={call.callStatus}
+          ></CallCard>
+        );
+      })}
     </ScrollView>
   );
 };
@@ -50,25 +67,25 @@ export function Home() {
     local: {
       userName: 'Alexandre',
       calls: [
-        // {
-        //   callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
-        //   callTitle: 'Tomada não funcionando',
-        //   callDescription: '',
-        //   callPriority: 5,
-        //   callStatus: 'open',
-        //   user: [
-        //     {
-        //       name: 'Alexandre',
-        //       email: 'alexandre@email.com.br',
-        //       apartment: [
-        //         {
-        //           apNumber: '1223',
-        //           apDescription: 'Bloco D',
-        //         },
-        //       ],
-        //     },
-        //   ],
-        // },
+        {
+          callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
+          callTitle: 'Tomada não funcionando',
+          callDescription: 'Teste',
+          callPriority: 5,
+          callStatus: 'open',
+          user: [
+            {
+              name: 'Alexandre',
+              email: 'alexandre@email.com.br',
+              apartment: [
+                {
+                  apNumber: '1223',
+                  apDescription: 'Bloco D',
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   };
