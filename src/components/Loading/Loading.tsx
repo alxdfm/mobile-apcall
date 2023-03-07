@@ -1,5 +1,5 @@
 import { View, ActivityIndicator } from 'react-native';
-import global from '../../global/colors';
+import global from '../../global/variables';
 import stylesLoading from './styles';
 
 export function Loading() {

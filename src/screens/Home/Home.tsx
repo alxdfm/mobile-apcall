@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
 import CallCard from '../../components/CallCard';
 import { CallCardProps } from '../../components/CallCard/CallCard';
 import Header from '../../components/Header';
-import global from '../../global/colors';
+import global from '../../global/variables';
 import styles from './styles';
 
 type Apartment = {
@@ -20,9 +20,11 @@ type Call = {
   callId: string;
   callTitle: string;
   callDescription: string;
-  callPriority: number;
-  callStatus: string;
+  callPriority: 0 | 1 | 2 | 3;
+  callStatus: 'open' | 'viewed' | 'wip' | 'closed';
   user: User[];
+  callCreatedAt: string;
+  callUpdatedAt?: string;
 };
 
 const renderCallsScrollView = (data: Call[] | null) => {
@@ -37,16 +39,10 @@ const renderCallsScrollView = (data: Call[] | null) => {
           callDescription: call.callDescription,
           callPriority: call.callPriority,
           callStatus: call.callStatus,
+          callCreatedAt: call.callCreatedAt,
+          callUpdatedAt: call.callUpdatedAt,
         };
-        return (
-          <CallCard
-            callId={call.callId}
-            callTitle={call.callTitle}
-            callDescription={call.callDescription}
-            callPriority={call.callPriority}
-            callStatus={call.callStatus}
-          ></CallCard>
-        );
+        return <CallCard key={call.callId} {...props}></CallCard>;
       })}
     </ScrollView>
   );
@@ -54,11 +50,12 @@ const renderCallsScrollView = (data: Call[] | null) => {
 
 const filterCallsByStatus = (
   data: { local: { userName: string; calls: Call[] } },
-  filter: string
+  filter: string,
+  not?: boolean
 ) => {
-  const filteredCalls = data.local.calls.filter(
-    (call) => call.callStatus === filter
-  );
+  const filteredCalls = not
+    ? data.local.calls.filter((call) => call.callStatus !== filter)
+    : data.local.calls.filter((call) => call.callStatus === filter);
   return !filteredCalls.length ? null : filteredCalls;
 };
 
@@ -70,8 +67,53 @@ export function Home() {
         {
           callId: 'fe262333-cf79-4c9d-a3d0-62f25c5700c3',
           callTitle: 'Tomada não funcionando',
-          callDescription: 'Teste',
-          callPriority: 5,
+          callDescription:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequatur hic incidunt voluptate corporis magni quasi quisquam necessitatibus numquam sequi.',
+          callPriority: 2,
+          callStatus: 'viewed',
+          user: [
+            {
+              name: 'Alexandre',
+              email: 'alexandre@email.com.br',
+              apartment: [
+                {
+                  apNumber: '1223',
+                  apDescription: 'Bloco D',
+                },
+              ],
+            },
+          ],
+          callCreatedAt: '12/10/2022',
+          callUpdatedAt: '23/10/2022',
+        },
+        {
+          callId: 'fe262333-2cf79-4c9d-a3d0-62f25c5700c3',
+          callTitle: 'Vizinho barulhento',
+          callDescription:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ex.',
+          callPriority: 3,
+          callStatus: 'wip',
+          user: [
+            {
+              name: 'Alexandre',
+              email: 'alexandre@email.com.br',
+              apartment: [
+                {
+                  apNumber: '1223',
+                  apDescription: 'Bloco D',
+                },
+              ],
+            },
+          ],
+          callCreatedAt: '12/10/2022',
+          callUpdatedAt: '23/10/2022',
+        },
+        {
+          callId: 'fe262333-cf79-4c9d-a3d0-362f25c5700c3',
+          callTitle: 'Torneira pingando',
+          callDescription:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa soluta illum quod exercitationem. Ea.',
+          callPriority: 0,
           callStatus: 'open',
           user: [
             {
@@ -85,12 +127,57 @@ export function Home() {
               ],
             },
           ],
+          callCreatedAt: '12/10/2022',
+        },
+        {
+          callId: 'fe2623e33-cf79-4c9d-a3d0-362f25c5700c3',
+          callTitle: 'Cano vazando',
+          callDescription:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          callPriority: 2,
+          callStatus: 'closed',
+          user: [
+            {
+              name: 'Alexandre',
+              email: 'alexandre@email.com.br',
+              apartment: [
+                {
+                  apNumber: '1223',
+                  apDescription: 'Bloco D',
+                },
+              ],
+            },
+          ],
+          callCreatedAt: '12/10/2022',
+          callUpdatedAt: '23/10/2022',
+        },
+        {
+          callId: 'fe262333-cf79-4c29d-a3d0-362f25c5700c3',
+          callTitle: 'Tinta descancando',
+          callDescription:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore amet blanditiis consectetur!',
+          callPriority: 1,
+          callStatus: 'closed',
+          user: [
+            {
+              name: 'Alexandre',
+              email: 'alexandre@email.com.br',
+              apartment: [
+                {
+                  apNumber: '1223',
+                  apDescription: 'Bloco D',
+                },
+              ],
+            },
+          ],
+          callCreatedAt: '12/10/2022',
+          callUpdatedAt: '23/10/2022',
         },
       ],
     },
   };
 
-  const callsOpened = filterCallsByStatus(data, 'open');
+  const callsOpened = filterCallsByStatus(data, 'closed', true);
   const callsClosed = filterCallsByStatus(data, 'closed');
 
   return (

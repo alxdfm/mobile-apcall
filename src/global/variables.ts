@@ -14,6 +14,18 @@ const global = {
       lightGray: '#eee',
       white: '#fff',
     },
+    priorityColors: {
+      veryLow: '#090',
+      low: '#009',
+      normal: '#dd0',
+      high: '#900',
+    },
+  },
+  fontSize: {
+    smallest: 10,
+    small: 16,
+    medium: 20,
+    large: 24,
   },
 };
 

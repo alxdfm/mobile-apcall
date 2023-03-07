@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import global from '../../global/colors';
+import global from '../../global/variables';
 
 const stylesHome = StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ const stylesHome = StyleSheet.create({
     paddingTop: 4,
   },
   title: {
-    fontSize: 16,
+    fontSize: global.fontSize.large,
     fontWeight: '800',
     textAlign: 'center',
     marginBottom: 8,
@@ -28,8 +28,8 @@ const stylesHome = StyleSheet.create({
   callsTitle: {
     textAlign: 'left',
     fontWeight: '700',
-    fontSize: 12,
-    marginBottom: 4,
+    fontSize: global.fontSize.medium,
+    marginBottom: 6,
   },
   createCallButton: {
     marginTop: 4,
@@ -37,7 +37,7 @@ const stylesHome = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   textCreateCallButton: {
-    fontSize: 10,
+    fontSize: global.fontSize.small,
     padding: 4,
     borderRadius: 4,
     backgroundColor: global.colors.yellow.primary,
@@ -59,7 +59,7 @@ const stylesHome = StyleSheet.create({
   },
   callsEmptyText: {
     color: global.colors.neutral.lightGray,
-    fontSize: 12,
+    fontSize: global.fontSize.medium,
   },
 });
 
