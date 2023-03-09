@@ -9,6 +9,7 @@ import {
 
 import { Loading } from './src/components/Loading/Loading';
 import Home from './src/screens/Home';
+import Login from './src/screens/Login';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <Home />
+      <Login />
     </>
   );
 }
