@@ -1,4 +1,5 @@
 import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
+import Button from '../../components/Button';
 import CallCard from '../../components/CallCard';
 import { CallCardProps } from '../../components/CallCard/CallCard';
 import Header from '../../components/Header';
@@ -192,16 +193,7 @@ export function Home() {
               <Text style={styles.callsEmptyText}>Nada por aqui</Text>
             </View>
           )}
-          <TouchableHighlight
-            onPress={() => {}}
-            activeOpacity={0.6}
-            underlayColor={global.colors.neutral.black}
-            style={styles.createCallButton}
-          >
-            <Text style={styles.textCreateCallButton}>
-              Criar um novo chamado
-            </Text>
-          </TouchableHighlight>
+          <Button text="Criar um novo chamado" />
         </View>
         <View style={styles.callsClosed}>
           <Text style={styles.callsTitle}>Seus chamados já fechados:</Text>
